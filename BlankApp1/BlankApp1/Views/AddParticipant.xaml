@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding Title}"
+             x:Class="BlankApp1.Views.AddParticipant">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Text="{Binding SearchText}"/>
+            <ListView x:Name="countryListView" IsVisible="{Binding ListViewVisible}" ItemsSource="{Binding ListUsers}" SelectedItem="{Binding SelectedUser}" CachingStrategy="RecycleElement" BackgroundColor="White" AbsoluteLayout.LayoutBounds="20,110,269,160" AbsoluteLayout.LayoutFlags="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame>
+                                <StackLayout BackgroundColor="White">
+                                    <Label Text="{Binding Email}" FontSize="16" TextColor="#FF464859"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Ajouter" Command="{Binding CmdAddParticipant}"></Button>
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="CenterAndExpand" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

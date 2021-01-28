@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlankApp1.Views.SignIn"
+             xmlns:converters="clr-namespace:BlankApp1.Converters"
+             Title="{Binding Title}"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Resources>
+        <converters:InverseBoolConverter x:Key="InverseBoolConverter"></converters:InverseBoolConverter>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Placeholder="Username@email.com" Text="{Binding Email}" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"/>
+            <Entry Placeholder="Mot de passe" Text="{Binding Password}" IsPassword="True" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"/>
+            <Button Text="Connexion" Command="{Binding CmdSignIn}" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"/>
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="CenterAndExpand" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

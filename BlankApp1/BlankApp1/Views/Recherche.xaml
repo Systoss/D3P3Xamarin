@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="http://prismlibrary.com"
+             Title="{Binding Title}"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
+             x:Class="BlankApp1.Views.Recherche">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <DatePicker Grid.Row="0" Date="{Binding DateDebut}" />
+        <DatePicker Grid.Row="1" Date="{Binding DateFin}" />
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <TimePicker Grid.Row="0" Grid.Column="0" Time="{Binding TimeDebut}" />
+            <TimePicker Grid.Row="0" Grid.Column="1" Time="{Binding TimeFin}" />
+            <Picker Grid.Row="1" Grid.Column="0"  Title="Espace" ItemsSource="{Binding SpaceTypeList}" ItemDisplayBinding="{Binding Label}" SelectedItem="{Binding SelectedSpaceType}"/>
+            <Entry Grid.Row="1" Grid.Column="1" Placeholder="Capacité" Text="{Binding Capacite}" Keyboard="Numeric"></Entry>
+        </Grid>
+        <ListView Grid.Row="3" ItemsSource="{Binding CriterionList}" SelectedItem="{Binding SelectedCriterion}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <!-- Probleme de contexte sur les commandes-->
+                        <ViewCell.ContextActions>
+                            <MenuItem Command="{Binding CmdNavigateToEditCriterion}"
+                      Text="Modifier" />
+                            <MenuItem Command="{Binding CmdDeleteCriterion}"
+                      Text="Supprimer"/>
+                        </ViewCell.ContextActions>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding ToolLabel}"></Label>
+                            <Label Text="{Binding Quantity}"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Grid.Row="4" Text="Ajouter un critère" Command="{Binding CmdNavigateToAddCriterion}"></Button>
+        <Button Grid.Row="5" Text="Rechercher" Command="{Binding CmdNavigateToResultSearch}"></Button>
+        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="CenterAndExpand" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+    </Grid>
+</ContentPage>

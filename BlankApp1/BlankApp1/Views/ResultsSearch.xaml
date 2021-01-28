@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlankApp1.Views.ResultsSearch">
+  <ContentPage.Content>
+      <StackLayout>
+            <ListView x:Name="LVResultsSearch" ItemsSource="{Binding Spaces}" SelectedItem="{Binding SelectedSpace}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" Detail="{Binding Capacity}"></TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Ajouter réservation" Command="{Binding CmdNavigateToAddReservation}"/>
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="CenterAndExpand" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+        </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

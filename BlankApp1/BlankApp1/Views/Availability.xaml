@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="http://prismlibrary.com"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
+             Title="{Binding Title}"
+             x:Class="BlankApp1.Views.Availability">
+    <ContentPage.Content>
+        <StackLayout>
+            <Picker Grid.Row="1" Grid.Column="0" x:Name="pickerSpace"
+                Title="Espace" ItemsSource="{Binding ListSpaces}" SelectedItem="{Binding SelectedSpace}" ItemDisplayBinding="{Binding Name}">
+            </Picker>
+            <DatePicker Grid.Row="0" Date="{Binding DateAvailability}" />
+            <Button Text="Voir les disponibilites" Command="{Binding CmdNavigateToListAvailability}"/>
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="CenterAndExpand" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

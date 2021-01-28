@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="http://prismlibrary.com"
+             Title="{Binding Title}"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
+             x:Class="BlankApp1.Views.Administration">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Admin!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Ajout d'un espace" Command="{Binding CmdNavigateToAddSpace}"/>
+            <Button Text="Ajout d'un type d'espace" Command="{Binding CmdNavigateToAddSpaceType}"/>
+            <Button Text="Ajout d'un equipement" Command="{Binding CmdNavigateToAddTool}"/>
+            <Button Text="Déconnexion" Command="{Binding CmdSignOut}"/>
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="CenterAndExpand" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
